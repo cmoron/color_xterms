@@ -26,11 +26,11 @@ readonly XTERM_COLORS_SIZE=${#XTERM_COLORS[@]}
 
 function main() {
     local terms_number=1
-    if [ $# -ge 1 ]; then
+    if (( $# >= 1 )); then
         # Check if param is an integer
         if [[ $1 =~ ^[0-9]+$ ]]; then
             local terms_number=$1
-        else 
+        else
             echo "Usage: color_xterm [number]"
             exit 1
         fi
@@ -38,7 +38,7 @@ function main() {
 
 
     local counter=0
-    while [ $counter -lt $terms_number ]; do
+    while (( $counter < $terms_number )); do
         local selected_color=${XTERM_COLORS[$((RANDOM%XTERM_COLORS_SIZE))]}
         xterm -bg "$selected_color" -fg "$DEFAULT_FG_COLOR" &
         local counter=$[counter + 1]
