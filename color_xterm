@@ -36,7 +36,6 @@ function main() {
         fi
     fi
 
-
     local counter=0
     while (( counter < terms_number )); do
         local selected_color=${XTERM_COLORS[$((RANDOM%XTERM_COLORS_SIZE))]}
